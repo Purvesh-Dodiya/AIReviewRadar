@@ -1,0 +1,16 @@
+{
+  "pull_request": {
+    "number": 123,
+    "head": {
+      "sha": "#sd23dsd",
+      "ref": "feature/add_viewmodel>"
+    },
+    "base": {
+      "sha": "#sad9asd9>",
+      "ref": "main"
+    }
+  },
+  "repository": {
+    "full_name": "purvesh-d/Test-Project"
+  }
+}

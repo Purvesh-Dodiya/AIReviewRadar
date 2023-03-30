@@ -1,7 +1,5 @@
 # OpenAI ChatGPT based PR reviewer and summarizer
 
-![AI](./docs/images/ai.png)
-
 ## Overview
 
 This [OpenAI ChatGPT](https://platform.openai.com/docs/guides/chat) based GitHub
@@ -51,7 +49,7 @@ jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-      - uses: fluxninja/openai-pr-reviewer@main
+      - uses: purvesh-d/OpenAIPRReviewAction@1.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -74,16 +72,6 @@ Examples:
 
 Note: A review comment is a comment made on a diff or a file in the pull
 request.
-
-### Screenshots
-
-![PR Summary](./docs/images/openai-pr-summary.png)
-
-![PR Release Notes](./docs/images/openai-pr-release-notes.png)
-
-![PR Review](./docs/images/openai-pr-review.png)
-
-![PR Conversation](./docs/images/openai-review-conversation.png)
 
 #### Environment variables
 
@@ -150,7 +138,7 @@ jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-      - uses: fluxninja/openai-pr-reviewer@main
+      - uses: purvesh-d/OpenAIPRReviewAction@1.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

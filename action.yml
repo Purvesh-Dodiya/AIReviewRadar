@@ -1,9 +1,9 @@
-name: 'OpenAI ChatGPT based PR Reviewer & Summarizer'
-description: 'OpenAI ChatGPT based PR Reviewer and Summarizer'
+name: 'OpenAISimformAction'
+description: 'OpenAI ChatGPT based PR Reviewer'
 branding:
   icon: 'aperture'
   color: 'orange'
-author: 'FluxNinja, Inc.'
+author: 'Simform'
 inputs:
   debug:
     required: false
@@ -17,11 +17,11 @@ inputs:
   max_files_to_review:
     required: false
     description: 'Max files to review. Less than or equal to 0 means no limit.'
-    default: '0'
+    default: '5'
   review_comment_lgtm:
     required: false
     description: 'Leave comments even if the patch is LGTM'
-    default: 'false'
+    default: 'true'
   path_filters:
     required: false
     description: |

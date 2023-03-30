@@ -6189,7 +6189,7 @@ ${filename}: ${summary}
 
 ---
 
-### Chat with 🤖 OpenAI Bot (\`@openai\`)
+### Chat with 🤖 Simform OpenAI Bot (\`@openai\`)
 - Reply on review comments left by this bot to ask follow-up questions. A review comment is a comment on a diff or a file.
 - Invite the bot into a review comment chain by tagging \`@openai\` in a reply.
 
@@ -6231,7 +6231,7 @@ ${skipped_files_to_summarize.length > 0
         }
         else {
             next_summarize_ids = release_notes_ids;
-            let message = '### Summary by OpenAI\n\n';
+            let message = '### Summary by Simform OpenAI\n\n';
             message += release_notes_response;
             commenter.update_description(context.payload.pull_request.number, message);
         }
