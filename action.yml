@@ -1,0 +1,316 @@
+name: 'OpenAI ChatGPT based PR Reviewer & Summarizer'
+description: 'OpenAI ChatGPT based PR Reviewer and Summarizer'
+branding:
+  icon: 'aperture'
+  color: 'orange'
+author: 'FluxNinja, Inc.'
+inputs:
+  debug:
+    required: false
+    description: 'Enable debug mode'
+    default: 'false'
+  max_files_to_summarize:
+    required: false
+    description:
+      'Max files to summarize. Less than or equal to 0 means no limit.'
+    default: '40'
+  max_files_to_review:
+    required: false
+    description: 'Max files to review. Less than or equal to 0 means no limit.'
+    default: '0'
+  review_comment_lgtm:
+    required: false
+    description: 'Leave comments even if the patch is LGTM'
+    default: 'false'
+  path_filters:
+    required: false
+    description: |
+      The path filters, e.g., "src/**.py", "!dist/**", each line will be considered as one pattern.
+      See also
+
+      - https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onpushpull_requestpull_request_targetpathspaths-ignore
+      - https://github.com/isaacs/minimatch
+    default: |
+      !dist/**
+      !**/*.pb.go
+      !**/*.lock
+      !**/*.yaml
+      !**/*.yml
+      !**/*.cfg
+      !**/*.toml
+      !**/*.ini
+      !**/*.mod
+      !**/*.sum
+      !**/*.work
+      !**/*.json
+      !**/*.mmd
+      !**/*.svg
+      !**/*.png
+      !**/*.dot
+      !**/*.md5sum
+      !**/*.wasm
+      !**/gen/**
+      !**/_gen/**
+      !**/vendor/**
+  openai_model:
+    required: false
+    description: 'Model to use'
+    default: 'gpt-3.5-turbo'
+  openai_model_temperature:
+    required: false
+    description: 'Temperature for GPT model'
+    default: '0.0'
+  openai_retries:
+    required: false
+    description:
+      'How many times to retry OpenAI API in case of timeouts or errors?'
+    default: '5'
+  openai_timeout_ms:
+    required: false
+    description: 'Timeout for OpenAI API call in millis'
+    default: '120000'
+  openai_concurrency_limit:
+    required: false
+    description: 'How many concurrent API calls to make to OpenAI servers?'
+    default: '4'
+  system_message:
+    required: false
+    description: 'System message to be sent to OpenAI'
+    default: |
+      You are `@openai` (aka `github-actions[bot]`), a highly
+      experienced software engineer with a strong ability to review 
+      code changes thoroughly.
+
+      Your role today is to conduct code and documentation reviews, and 
+      generate code and documentation if asked to do so. You will point 
+      out potential issues such as security (e.g. XSS), logic errors, 
+      syntax errors, out of bound errors, data races, livelocks, starvation, 
+      suspension, order violation, atomicity violation, consistency, 
+      complexity, error handling, typos, grammar, and more.
+  summarize_beginning:
+    required: false
+    description: 'The prompt for the whole pull request'
+    default: |
+      $system_message
+
+      In this session, we will summarize a pull request. 
+
+      The pull request has the title "$title" and the following description:
+
+      ```
+      $description
+      ```
+
+      Reply "OK" to confirm that you are ready.
+  summarize_file_diff:
+    required: false
+    description: 'The prompt for each file diff'
+    default: |
+      I am providing diff for `$filename` below. I would like you to summarize 
+      the diff within 30 words.
+
+      ```diff
+      $file_diff
+      ```
+  summarize:
+    required: false
+    description: 'The prompt for final summarization response'
+    default: |
+      This is the end of the summarization session. Below is the summary you have 
+      generated so far for each file.
+
+      ```
+      $summary
+      ```
+
+      Please provide your final response in the `markdown` format with 
+      the following content:
+        - Thank the user for letting you participate in the code review. 
+        - High-level summary (comment on the overall change instead of 
+          specific files within 80 words)
+        - Table of files and their summaries. You can group files with 
+          similar changes together into one row to save space.
+
+      Avoid additional commentary as this summary will be added as a comment on the pull request.
+  summarize_release_notes:
+    required: false
+    description: 'The prompt for generating release notes'
+    default: |
+      Create concise release notes in `markdown` format for this pull request, 
+      focusing on its purpose and user story. You can classify the changes as 
+      "New Feature", "Bug fix", "Documentation", "Refactor", "Style", 
+      "Test", "Chore", "Revert", and provide a bullet point list. For example: 
+      "New Feature: An integrations page was added to the UI". Keep your 
+      response within 50-100 words. Avoid additional commentary as this response 
+      will be used as is in our release notes.
+
+      Below the release notes, generate a short, celebratory poem about the 
+      changes in this PR and add this poem as a quote (> symbol). You can 
+      use emojis in the poem, where they are relevant.
+  review_beginning:
+    required: false
+    description: 'The beginning prompt of a code review dialog'
+    default: |
+      $system_message
+
+      I will provide you with some files and the entire diff to help you build 
+      context, unless the content is too large. Then, I will send you each patch 
+      from the diff for review.
+
+      The pull request has the title "$title" and the following description:
+
+      ```
+      $description
+      ```
+
+      The OpenAI-generated summary is as follows:
+
+      ```
+      $summary
+      ```
+
+      Reply "OK" to confirm.
+  review_file:
+    required: false
+    description: 'The prompt for each file'
+    default: |
+      Here is the content of `$filename` for context. Please use this context 
+      when reviewing patches.
+
+      ```
+      $file_content
+      ```
+
+      Reply "LGTM!" if the existing code in this file looks correct. If there 
+      are serious issues in the existing code please let me know and I will 
+      add your comment on the pull request for this file.
+  review_file_diff:
+    required: false
+    description: 'The prompt for each file diff'
+    default: |
+      Here is the entire diff for `$filename` for context. Please use this context 
+      when reviewing patches.
+
+      ```diff
+      $file_diff
+      ```
+
+      Reply "OK" to confirm.
+  review_patch_begin:
+    required: false
+    description: 'The prompt for each file diff'
+    default: |
+      Next, I will send you a series of patches. Each patch consists of a diff snippet, 
+      and your task is to review every patch. Identify any bug risks or provide 
+      improvement suggestions. Otherwise, if the patch is acceptable, please reply 
+      "LGTM!" with a short comment. 
+
+      Your responses will be recorded as review comments on the pull request. 
+      Markdown format is preferred for your responses. 
+
+      Reply "OK" to confirm.
+  review_patch:
+    required: false
+    description: 'The prompt for each chunks/patches'
+    default: |
+      $filename
+
+      Existing comments on the patch, though some of them may be outdated. 
+      Please use them as additional context.
+      ```
+      $comment_chain
+      ```
+
+      Diff for review:
+      ```diff
+      $patch
+      ```
+  comment_beginning:
+    required: false
+    description: 'Prompt for comment'
+    default: |
+      $system_message
+
+      A comment was made on a review for a diff patch on file 
+      `$filename`. I would like you to follow the instructions 
+      in that comment. 
+
+      If possible, I will provide you the file and the entire diff 
+      to help provide overall context for your response.
+
+      The pull request has the title "$title" and the following 
+      description:
+
+      ```
+      $description
+      ```
+
+      The OpenAI-generated summary is as follows:
+
+      ```
+      $summary
+      ```
+
+      Reply "OK" to confirm.
+  comment_file:
+    required: false
+    description: 'Prompt for file'
+    default: |
+      Here is the content of `$filename` for context.
+
+      ```
+      $file_content
+      ```
+
+      Reply "OK" to confirm.
+  comment_file_diff:
+    required: false
+    description: 'Prompt for file diff'
+    default: |
+      Here is the entire diff for `$filename` for context.
+
+      ```diff
+      $file_diff
+      ```
+
+      Reply "OK" to confirm.
+  comment:
+    required: false
+    description: 'Prompt for comment'
+    default: |
+      I would like you to follow the instructions in the new 
+      comment made on a conversation chain on a code review diff.
+
+      Diff being commented on:
+
+      ```diff
+      $diff
+      ```
+
+      The format of the conversation chain is:
+      `user: comment`
+
+      Conversation chain (including the new comment):
+
+      ```
+      $comment_chain
+      ```
+
+      Please reply directly to the new comment (instead of suggesting 
+      a reply) and your reply will be posted as-is.
+
+      If the comment contains instructions/requests for you, please comply. 
+      For example, if the comment is asking you to generate documentation 
+      comments on the code, in your reply please generate the required code.
+
+      In your reply, please make sure to begin the reply by tagging the user 
+      with "@user".
+
+      The comment/request that you need to directly reply to:
+
+      ```
+      $comment
+      ```
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

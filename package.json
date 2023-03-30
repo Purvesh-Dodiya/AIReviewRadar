@@ -1,0 +1,51 @@
+{
+  "name": "openai-pr-reviewer",
+  "version": "0.0.0",
+  "private": true,
+  "description": "OpenAI-based PR Reviewer and Summarizer.",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc",
+    "package": "ncc build --license licenses.txt",
+    "act": "npm run build && npm run package && ./bin/act pull_request_target --secret-file .secrets",
+    "format": "prettier --write '**/*.ts'",
+    "format-check": "prettier --check '**/*.ts'",
+    "lint": "eslint src/**/*.ts",
+    "test": "jest",
+    "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fluxninja/openai-pr-reviewer.git"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "setup"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1",
+    "@dqbd/tiktoken": "^1.0.2",
+    "@octokit/action": "^5.0.2",
+    "minimatch": "^7.4.2",
+    "node-fetch": "^3.3.1",
+    "p-limit": "^4.0.0"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.5.0",
+    "@types/node": "^18.15.11",
+    "@typescript-eslint/parser": "^5.57.0",
+    "@vercel/ncc": "^0.36.1",
+    "chatgpt": "^5.1.3",
+    "eslint": "^8.37.0",
+    "eslint-plugin-github": "^4.6.1",
+    "eslint-plugin-jest": "^27.2.1",
+    "jest": "^27.2.5",
+    "js-yaml": "^4.1.0",
+    "prettier": "2.8.7",
+    "ts-jest": "^27.1.2",
+    "typescript": "^4.4.4"
+  }
+}
