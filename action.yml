@@ -179,10 +179,10 @@ inputs:
 
           1. Each function should have a maximum of 4 parameters.
           2. All variables should have access modifiers.
-          3. Variable names should be at least 3 characters long and meaningful.
-          4. Variable names should be in camel case and begin with a lowercase letter.
+          3. Variable names should be at least 3 characters long, lower camel case and meaningful.
+          4. Function name should be in lowercamel case.
           5. There should be no more than one extra space or empty line in the code.
-          6. If the code is written in Swift, there should be following comment on every top of extension: MARK: -
+          6. If the code is written in Swift, there should be following comment on every top of extension: "// MARK: - "
           7. There should be at most one statement per line, and each statement should be followed by a line break, except when the line ends with a block that also contains zero or one statements.
           8. A single Unicode space should appear only in the following places and if not there then add comment for formatting issue.:
             a. Separating any reserved word starting a conditional or switch statement (such as if, guard, while, or switch) from the expression that follows it if that expression starts with an open parenthesis (().
@@ -228,8 +228,8 @@ inputs:
 
         1. Each function should have a maximum of 4 parameters.
         2. All variables should have access modifiers.
-        3. Variable names should be at least 3 characters long and meaningful.
-        4. Variable names should be in camel case and begin with a lowercase letter.
+        3. Variable names should be at least 3 characters long, lower camel case and meaningful.
+        4. Function name should be in lowercamel case.
         5. There should be no more than one extra space or empty line in the code.
         6. If the code is written in Swift, there should be following comment on every top of extension: MARK: -
         7. There should be at most one statement per line, and each statement should be followed by a line break, except when the line ends with a block that also contains zero or one statements.
