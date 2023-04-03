@@ -86,7 +86,7 @@ inputs:
       out potential issues such as security (e.g. XSS), logic errors, 
       syntax errors, out of bound errors, data races, livelocks, starvation, 
       suspension, order violation, atomicity violation, consistency, 
-      complexity, error handling, typos, grammar, and more. Additionally, please ensure that any functions with parameters have no more than 2 parameters. If a function exceeds this limit, please bring it to the attention of the pull request reviewers in the comments section. Furthermore, please verify that access modifiers have been declared for each variable in the code. If any variable lacks an access modifier, please indicate this in the comments section.
+      complexity, error handling, typos, grammar, and more, please indicate this in the comments section.
   summarize_beginning:
     required: false
     description: 'The prompt for the whole pull request'
@@ -175,7 +175,31 @@ inputs:
     description: 'The prompt for each file'
     default: |
       Here is the content of `$filename` for context. Please use this context 
-      when reviewing patches. Additionally, please ensure that any functions with parameters have no more than 2 parameters. If a function exceeds this limit, please bring it to the attention of the pull request reviewers in the comments section. Furthermore, please verify that access modifiers have been declared for each variable in the code. If any variable lacks an access modifier, please indicate this in the comments section.
+      when reviewing patches. Please review the following code according to the following guidelines:
+
+      1. Each function should have a maximum of 4 parameters.
+      2. All variables should have access modifiers.
+      3. Variable names should be at least 3 characters long and meaningful.
+      4. Variable names should be in camel case and begin with a lowercase letter.
+      5. There should be no more than one extra space or empty line in the code.
+      6. If the code is written in Swift, please add the following comment on every top of extension: MARK: -
+      7. There should be at most one statement per line, and each statement should be followed by a line break, except when the line ends with a block that also contains zero or one statements.
+      8. A single Unicode space should appear only in the following places:
+        a. Separating any reserved word starting a conditional or switch statement (such as if, guard, while, or switch) from the expression that follows it if that expression starts with an open parenthesis (().
+        b. Before any closing curly brace (}) that follows code on the same line, before any open curly brace ({), and after any open curly brace ({) that is followed by code on the same line.
+        c. On both sides of any binary or ternary operator, the = sign used in assignment, initialization of variables/properties, and default arguments in functions.
+        d. The arrow (->) preceding the return type of a function.
+        e. There should be no space on either side of the dot (.) used to reference value and type members.
+        f. After, but not before, the comma (,) in parameter lists and in tuple/array/dictionary literals.
+        g. After, but not before, the colon (:) in dictionary literals and switch statements.
+      9. There should be at least two spaces before and exactly one space after the double slash (//) that begins an end-of-line comment.
+      10. Outside, but not inside, the brackets of an array or dictionary literals and the parentheses of a tuple literal.
+      11. Parentheses should not be used around the top-most expression that follows an if, guard, while, or switch keyword.
+      12. Case statements are indented at the same level as the switch statement to which they belong; the statements inside the case blocks are then indented +2 spaces from that level.
+      13. In general, there should be only one case per line in an enum. The comma-delimited form may be used only when none of the cases have associated values or raw values, all cases fit on a single line, and the cases do not need further documentation because their meanings are obvious from their names.
+      14. Force-unwrapping and force-casting are often code smells and are strongly discouraged.
+
+    Please review the code and provide feedback on any issues that do not conform to these guidelines.
 
       ```
       $file_content
@@ -202,7 +226,31 @@ inputs:
     default: |
       Next, I will send you a series of patches. Each patch consists of a diff snippet, 
       and your task is to review every patch. Identify any bug risks or provide 
-      improvement suggestions. Additionally, please ensure that any functions with parameters have no more than 2 parameters. If a function exceeds this limit, please bring it to the attention of the pull request reviewers in the comments section. Furthermore, please verify that access modifiers have been declared for each variable in the code. If any variable lacks an access modifier, please indicate this in the comments section. Otherwise, if the patch is acceptable, please reply 
+      improvement suggestions. Please review the following code according to the following guidelines:
+
+      1. Each function should have a maximum of 4 parameters.
+      2. All variables should have access modifiers.
+      3. Variable names should be at least 3 characters long and meaningful.
+      4. Variable names should be in camel case and begin with a lowercase letter.
+      5. There should be no more than one extra space or empty line in the code.
+      6. If the code is written in Swift, please add the following comment on every top of extension: MARK: -
+      7. There should be at most one statement per line, and each statement should be followed by a line break, except when the line ends with a block that also contains zero or one statements.
+      8. A single Unicode space should appear only in the following places:
+        a. Separating any reserved word starting a conditional or switch statement (such as if, guard, while, or switch) from the expression that follows it if that expression starts with an open parenthesis (().
+        b. Before any closing curly brace (}) that follows code on the same line, before any open curly brace ({), and after any open curly brace ({) that is followed by code on the same line.
+        c. On both sides of any binary or ternary operator, the = sign used in assignment, initialization of variables/properties, and default arguments in functions.
+        d. The arrow (->) preceding the return type of a function.
+        e. There should be no space on either side of the dot (.) used to reference value and type members.
+        f. After, but not before, the comma (,) in parameter lists and in tuple/array/dictionary literals.
+        g. After, but not before, the colon (:) in dictionary literals and switch statements.
+      9. There should be at least two spaces before and exactly one space after the double slash (//) that begins an end-of-line comment.
+      10. Outside, but not inside, the brackets of an array or dictionary literals and the parentheses of a tuple literal.
+      11. Parentheses should not be used around the top-most expression that follows an if, guard, while, or switch keyword.
+      12. Case statements are indented at the same level as the switch statement to which they belong; the statements inside the case blocks are then indented +2 spaces from that level.
+      13. In general, there should be only one case per line in an enum. The comma-delimited form may be used only when none of the cases have associated values or raw values, all cases fit on a single line, and the cases do not need further documentation because their meanings are obvious from their names.
+      14. Force-unwrapping and force-casting are often code smells and are strongly discouraged.
+
+    Please review the code and provide feedback on any issues that do not conform to these guidelines. if the patch is acceptable, please reply 
       "LGTM!" with a short comment. 
 
       Your responses will be recorded as review comments on the pull request. 
