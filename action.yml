@@ -19,7 +19,7 @@ inputs:
     description: 'Max files to review. Less than or equal to 0 means no limit.'
     default: '5'
   review_comment_lgtm:
-    required: false
+    required: true
     description: 'Leave comments even if the patch is LGTM'
     default: 'true'
   path_filters:
