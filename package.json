@@ -1,8 +1,8 @@
 {
-  "name": "openai-pr-reviewer",
-  "version": "0.0.0",
+  "name": "OpenAISimformAction",
+  "version": "1.0.0",
   "private": true,
-  "description": "OpenAI-based PR Reviewer and Summarizer.",
+  "description": "OpenAI-based PR Reviewer.",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
