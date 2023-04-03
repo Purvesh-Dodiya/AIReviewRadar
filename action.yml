@@ -182,9 +182,9 @@ inputs:
           3. Variable names should be at least 3 characters long and meaningful.
           4. Variable names should be in camel case and begin with a lowercase letter.
           5. There should be no more than one extra space or empty line in the code.
-          6. If the code is written in Swift, please add the following comment on every top of extension: MARK: -
+          6. If the code is written in Swift, there should be following comment on every top of extension: MARK: -
           7. There should be at most one statement per line, and each statement should be followed by a line break, except when the line ends with a block that also contains zero or one statements.
-          8. A single Unicode space should appear only in the following places:
+          8. A single Unicode space should appear only in the following places and if not there then add comment for formatting issue.:
             a. Separating any reserved word starting a conditional or switch statement (such as if, guard, while, or switch) from the expression that follows it if that expression starts with an open parenthesis (().
             b. Before any closing curly brace (}) that follows code on the same line, before any open curly brace ({), and after any open curly brace ({) that is followed by code on the same line.
             c. On both sides of any binary or ternary operator, the = sign used in assignment, initialization of variables/properties, and default arguments in functions.
@@ -205,9 +205,7 @@ inputs:
       $file_content
       ```
 
-      Reply "LGTM!" if the existing code in this file looks correct. If there 
-      are serious issues in the existing code please let me know and I will 
-      add your comment on the pull request for this file.
+      Reply "LGTM!" if the existing code in this file looks correct and follow all the above guidelines. If the existing code not following any one of the above guidelines then please let me know and I will add your comment on the pull request for this file.
   review_file_diff:
     required: false
     description: 'The prompt for each file diff'
@@ -228,14 +226,14 @@ inputs:
       and your task is to review every patch. Identify any bug risks or provide 
       improvement suggestions. Please review the following code according to the following guidelines:
 
-      1. Each function should have a maximum of 4 parameters.
-      2. All variables should have access modifiers.
-      3. Variable names should be at least 3 characters long and meaningful.
-      4. Variable names should be in camel case and begin with a lowercase letter.
-      5. There should be no more than one extra space or empty line in the code.
-      6. If the code is written in Swift, please add the following comment on every top of extension: MARK: -
-      7. There should be at most one statement per line, and each statement should be followed by a line break, except when the line ends with a block that also contains zero or one statements.
-      8. A single Unicode space should appear only in the following places:
+        1. Each function should have a maximum of 4 parameters.
+        2. All variables should have access modifiers.
+        3. Variable names should be at least 3 characters long and meaningful.
+        4. Variable names should be in camel case and begin with a lowercase letter.
+        5. There should be no more than one extra space or empty line in the code.
+        6. If the code is written in Swift, there should be following comment on every top of extension: MARK: -
+        7. There should be at most one statement per line, and each statement should be followed by a line break, except when the line ends with a block that also contains zero or one statements.
+        8. A single Unicode space should appear only in the following places and if not there then add comment for formatting issue.:
         a. Separating any reserved word starting a conditional or switch statement (such as if, guard, while, or switch) from the expression that follows it if that expression starts with an open parenthesis (().
         b. Before any closing curly brace (}) that follows code on the same line, before any open curly brace ({), and after any open curly brace ({) that is followed by code on the same line.
         c. On both sides of any binary or ternary operator, the = sign used in assignment, initialization of variables/properties, and default arguments in functions.
@@ -250,7 +248,7 @@ inputs:
       13. In general, there should be only one case per line in an enum. The comma-delimited form may be used only when none of the cases have associated values or raw values, all cases fit on a single line, and the cases do not need further documentation because their meanings are obvious from their names.
       14. Force-unwrapping and force-casting are often code smells and are strongly discouraged.
 
-        Please review the code and provide feedback on any issues that do not conform to these guidelines. if the patch is acceptable, please reply 
+      Please review the code and provide feedback on any issues that do not conform to above guidelines. if the patch is follow all the guidelines and acceptable, please reply 
       "LGTM!" with a short comment. 
 
       Your responses will be recorded as review comments on the pull request. 
