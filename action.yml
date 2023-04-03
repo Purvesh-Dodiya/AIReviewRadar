@@ -86,7 +86,7 @@ inputs:
       out potential issues such as security (e.g. XSS), logic errors, 
       syntax errors, out of bound errors, data races, livelocks, starvation, 
       suspension, order violation, atomicity violation, consistency, 
-      complexity, error handling, typos, grammar, and more.
+      complexity, error handling, typos, grammar, and more. Additionally, please ensure that any functions with parameters have no more than 2 parameters. If a function exceeds this limit, please bring it to the attention of the pull request reviewers in the comments section. Furthermore, please verify that access modifiers have been declared for each variable in the code. If any variable lacks an access modifier, please indicate this in the comments section.
   summarize_beginning:
     required: false
     description: 'The prompt for the whole pull request'
@@ -175,7 +175,7 @@ inputs:
     description: 'The prompt for each file'
     default: |
       Here is the content of `$filename` for context. Please use this context 
-      when reviewing patches.
+      when reviewing patches. Additionally, please ensure that any functions with parameters have no more than 2 parameters. If a function exceeds this limit, please bring it to the attention of the pull request reviewers in the comments section. Furthermore, please verify that access modifiers have been declared for each variable in the code. If any variable lacks an access modifier, please indicate this in the comments section.
 
       ```
       $file_content
@@ -202,7 +202,7 @@ inputs:
     default: |
       Next, I will send you a series of patches. Each patch consists of a diff snippet, 
       and your task is to review every patch. Identify any bug risks or provide 
-      improvement suggestions. Otherwise, if the patch is acceptable, please reply 
+      improvement suggestions. Additionally, please ensure that any functions with parameters have no more than 2 parameters. If a function exceeds this limit, please bring it to the attention of the pull request reviewers in the comments section. Furthermore, please verify that access modifiers have been declared for each variable in the code. If any variable lacks an access modifier, please indicate this in the comments section. Otherwise, if the patch is acceptable, please reply 
       "LGTM!" with a short comment. 
 
       Your responses will be recorded as review comments on the pull request. 

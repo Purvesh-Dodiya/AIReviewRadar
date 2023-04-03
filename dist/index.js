@@ -6231,7 +6231,7 @@ ${skipped_files_to_summarize.length > 0
         }
         else {
             next_summarize_ids = release_notes_ids;
-            let message = '### Summary by Simform OpenAI\n\n';
+            let message = '### Summary by Simform1 OpenAI\n\n';
             message += release_notes_response;
             commenter.update_description(context.payload.pull_request.number, message);
         }
