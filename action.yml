@@ -205,7 +205,7 @@ inputs:
       $file_content
       ```
 
-      Reply "LGTM!" if the existing code in this file looks correct and follow all the above guidelines. If the existing code not following any one of the above guidelines then please let me know and I will add your comment on the pull request for this file.
+      Reply "LGTM!" if the existing code in this file looks correct and follow all the above guidelines. If the existing code not following any one of the above guidelines then please let me know and I will add your comment on the pull request for this file and don't use "LGTM".
   review_file_diff:
     required: false
     description: 'The prompt for each file diff'
@@ -249,7 +249,7 @@ inputs:
       14. Force-unwrapping and force-casting are often code smells and are strongly discouraged.
 
       Please review the code and provide feedback on any issues that do not conform to above guidelines. if the patch is follow all the guidelines and acceptable, please reply 
-      "LGTM!" with a short comment. 
+      "LGTM!" with a short comment or else don't use "LGTM"
 
       Your responses will be recorded as review comments on the pull request. 
       Markdown format is preferred for your responses. 
