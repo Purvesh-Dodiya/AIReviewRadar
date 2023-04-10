@@ -198,7 +198,7 @@ inputs:
           12. Case statements are indented at the same level as the switch statement to which they belong; the statements inside the case blocks are then indented +2 spaces from that level.
           13. In general, there should be only one case per line in an enum. The comma-delimited form may be used only when none of the cases have associated values or raw values, all cases fit on a single line, and the cases do not need further documentation because their meanings are obvious from their names.
           14. Force-unwrapping and force-casting are often code smells and are strongly discouraged.
-          15. If the files is from below two list or path containt the below direcotry that should be in gitignore than don't reivew that file, just add comment to add that file in gitignore.
+          15. If the files is from below two list or path containt the below direcotry that should be in gitignore than don't reivew that file, just reply with short comment to add it to gitignore and don't use "LGTM".
             # List of file that should be in gitignore for anroid.
                *.apk, *.ap_, *.dex, *.class, bin/, gen/, local.properties, *.iml, *.log, .idea/, .gradle/, build/, 
                captures/, .externalNativeBuild, .cxx/,
@@ -214,7 +214,7 @@ inputs:
       $file_content
       ```
 
-      Please review the code and provide feedback on any issues that do not conform to above guidelines. if the patch follows all the guidelines, please reply "LGTM!" or else don't use "LGTM"
+      if the patch follows all the guidelines, please reply "LGTM!" and don't add any suggetions or extra details or if not following then don't use "LGTM" just reply with required changes.
   review_file_diff:
     required: false
     description: 'The prompt for each file diff'
@@ -256,7 +256,7 @@ inputs:
       12. Case statements are indented at the same level as the switch statement to which they belong; the statements inside the case blocks are then indented +2 spaces from that level.
       13. In general, there should be only one case per line in an enum. The comma-delimited form may be used only when none of the cases have associated values or raw values, all cases fit on a single line, and the cases do not need further documentation because their meanings are obvious from their names.
       14. Force-unwrapping and force-casting are often code smells and are strongly discouraged.
-      15. If the files is from below two list or path containt the below direcotry that should be in gitignore than don't reivew that file, just add comment to add that file in gitignore.
+      15. If the files is from below two list or path containt the below direcotry that should be in gitignore than don't reivew that file, just reply with short comment to add it to gitignore and don't use "LGTM"
         # List of file that should be in gitignore for anroid.
           *.apk, *.ap_, *.dex, *.class, bin/, gen/, local.properties, *.iml, *.log, .idea/, .gradle/, build/, 
           captures/, .externalNativeBuild, .cxx/,
@@ -268,7 +268,7 @@ inputs:
       16. Ignore following files while review, Don't add any commnet just reply with "LGTM" so that comment will not added.        
         storyboard, iOS pbxproj, xcschemae, info.plist
       
-      Please review the code and provide feedback on any issues that do not conform to above guidelines. if the patch follows all the guidelines, please reply "LGTM!" or else don't use "LGTM"
+        if the patch follows all the guidelines, please reply "LGTM!" and don't add any suggetions or extra details or if not following then don't use "LGTM" just reply with required changes."
 
       Your responses will be recorded as review comments on the pull request. 
       Markdown format is preferred for your responses. 
