@@ -17,7 +17,7 @@ inputs:
   max_files_to_review:
     required: false
     description: 'Max files to review. Less than or equal to 0 means no limit.'
-    default: '5'
+    default: '25'
   review_comment_lgtm:
     required: true
     description: 'Leave comments even if the patch is LGTM'
@@ -198,14 +198,23 @@ inputs:
           12. Case statements are indented at the same level as the switch statement to which they belong; the statements inside the case blocks are then indented +2 spaces from that level.
           13. In general, there should be only one case per line in an enum. The comma-delimited form may be used only when none of the cases have associated values or raw values, all cases fit on a single line, and the cases do not need further documentation because their meanings are obvious from their names.
           14. Force-unwrapping and force-casting are often code smells and are strongly discouraged.
+          15. If the files is from below two list or path containt the below direcotry that should be in gitignore than don't reivew that file, just add comment to add that file in gitignore.
+            # List of file that should be in gitignore for anroid.
+               *.apk, *.ap_, *.dex, *.class, bin/, gen/, local.properties, *.iml, *.log, .idea/, .gradle/, build/, 
+               captures/, .externalNativeBuild, .cxx/,
+
+             # List of file that should be in gitignore for iOS.
+               .DS_Store, */build/, DerivedData/, *.pbxuser, !default.pbxuser, *.mode1v3, !default.mode1v3, *.mode2v3,
+               !default.mode2v3, *.perspectivev3, !default.perspectivev3,
+
+          16. Ignore following files while review, Don't add any commnet just reply with "LGTM" so that comment will not added.        
+            storyboard, iOS pbxproj, xcschemae, info.plist
 
       ```
       $file_content
       ```
 
-      Ignore following files while review: storyboard, iOS pbxproj, xcschemae, info.plist
-      
-      Please review the code and provide feedback on any issues that do not conform to above guidelines and not in ignore files list. if the patch is follow all the guidelines, please reply 
+      Please review the code and provide feedback on any issues that do not conform to above guidelines . if the patch is follow all the guidelines, please reply 
       "LGTM!" with a short comment or else don't use "LGTM"
   review_file_diff:
     required: false
@@ -248,10 +257,19 @@ inputs:
       12. Case statements are indented at the same level as the switch statement to which they belong; the statements inside the case blocks are then indented +2 spaces from that level.
       13. In general, there should be only one case per line in an enum. The comma-delimited form may be used only when none of the cases have associated values or raw values, all cases fit on a single line, and the cases do not need further documentation because their meanings are obvious from their names.
       14. Force-unwrapping and force-casting are often code smells and are strongly discouraged.
+      15. If the files is from below two list or path containt the below direcotry that should be in gitignore than don't reivew that file, just add comment to add that file in gitignore.
+        # List of file that should be in gitignore for anroid.
+          *.apk, *.ap_, *.dex, *.class, bin/, gen/, local.properties, *.iml, *.log, .idea/, .gradle/, build/, 
+          captures/, .externalNativeBuild, .cxx/,
 
-      Ignore following files while review: storyboard, iOS pbxproj, xcschemae, info.plist
+        # List of file that should be in gitignore for iOS.
+          .DS_Store, */build/, DerivedData/, *.pbxuser, !default.pbxuser, *.mode1v3, !default.mode1v3, *.mode2v3,
+          !default.mode2v3, *.perspectivev3, !default.perspectivev3,
 
-      Please review the code and provide feedback on any issues that do not conform to above guidelines and not in ignore files. if the patch is follow all the guidelines, please reply 
+      16. Ignore following files while review, Don't add any commnet just reply with "LGTM" so that comment will not added.        
+        storyboard, iOS pbxproj, xcschemae, info.plist
+      
+      Please review the code and provide feedback on any issues that do not conform to above guidelines. if the patch is follow all the guidelines, please reply 
       "LGTM!" with a short comment or else don't use "LGTM"
 
       Your responses will be recorded as review comments on the pull request. 
