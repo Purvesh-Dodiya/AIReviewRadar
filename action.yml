@@ -214,8 +214,7 @@ inputs:
       $file_content
       ```
 
-      Please review the code and provide feedback on any issues that do not conform to above guidelines . if the patch is follow all the guidelines, please reply 
-      "LGTM!" with a short comment or else don't use "LGTM"
+      Please review the code and provide feedback on any issues that do not conform to above guidelines. if the patch follows all the guidelines, please reply "LGTM!" or else don't use "LGTM"
   review_file_diff:
     required: false
     description: 'The prompt for each file diff'
@@ -269,8 +268,7 @@ inputs:
       16. Ignore following files while review, Don't add any commnet just reply with "LGTM" so that comment will not added.        
         storyboard, iOS pbxproj, xcschemae, info.plist
       
-      Please review the code and provide feedback on any issues that do not conform to above guidelines. if the patch is follow all the guidelines, please reply 
-      "LGTM!" with a short comment or else don't use "LGTM"
+      Please review the code and provide feedback on any issues that do not conform to above guidelines. if the patch follows all the guidelines, please reply "LGTM!" or else don't use "LGTM"
 
       Your responses will be recorded as review comments on the pull request. 
       Markdown format is preferred for your responses. 
