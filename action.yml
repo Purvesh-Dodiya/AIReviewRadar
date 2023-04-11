@@ -205,14 +205,13 @@ inputs:
                .DS_Store, */build/, DerivedData/, *.pbxuser, !default.pbxuser, *.mode1v3, !default.mode1v3, *.mode2v3,
                !default.mode2v3, *.perspectivev3, !default.perspectivev3,
 
-          16. Ignore following files while review, Don't add any commnet just reply with "LGTM" so that comment will not added.        
+          16. Ignore following files while review and consider that these file always follow all the guidelines so reply with "LGTM!" so that comment will not added.        
             storyboard, iOS pbxproj, xcschemae, info.plist
 
       ```
       $file_content
       ```
-
-      if the patch follows all the guidelines, please reply "LGTM!" and don't add any suggetions or extra details and avoid additional commentary else if not following the guidelines then don't use "LGTM" just reply with required changes. 
+      If the patch adheres to all the guidelines, kindly respond with "LGTM!" without any additional suggestions or comments. However, if the guidelines are not met, please provide feedback on the required changes without using "LGTM!" and refrain from adding extra commentary.
   review_file_diff:
     required: false
     description: 'The prompt for each file diff'
@@ -263,10 +262,10 @@ inputs:
           .DS_Store, */build/, DerivedData/, *.pbxuser, !default.pbxuser, *.mode1v3, !default.mode1v3, *.mode2v3,
           !default.mode2v3, *.perspectivev3, !default.perspectivev3,
 
-      16. Ignore following files while review, Don't add any commnet just reply with "LGTM" so that comment will not added.        
+      16. Ignore following files while review and consider that these file always follow all the guidelines so reply with "LGTM!" so that comment will not added.               
         storyboard, iOS pbxproj, xcschemae, info.plist
       
-      if the patch follows all the guidelines, please reply "LGTM!" and don't add any suggetions or extra details and avoid additional commentary else if not following the guidelines then don't use "LGTM" just reply with required changes. 
+      If the patch adheres to all the guidelines, kindly respond with "LGTM!" without any additional suggestions or comments. However, if the guidelines are not met, please provide feedback on the required changes without using "LGTM!" and refrain from adding extra commentary.
 
       Your responses will be recorded as review comments on the pull request. 
       Markdown format is preferred for your responses. 
