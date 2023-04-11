@@ -205,8 +205,7 @@ inputs:
                .DS_Store, */build/, DerivedData/, *.pbxuser, !default.pbxuser, *.mode1v3, !default.mode1v3, *.mode2v3,
                !default.mode2v3, *.perspectivev3, !default.perspectivev3,
 
-          16. Ignore following files while review and consider that these file always follow all the guidelines so reply with "LGTM!" so that comment will not added.        
-            storyboard, iOS pbxproj, xcschemae, info.plist
+          16. Please exclude the following files from the review process and assume that they always adhere to all the guidelines. As such, when these files are included in a pull request, reply with "LGTM!" to avoid unnecessary comments. The files to be ignored are: storyboard, iOS pbxproj, xcschemae, info.plist.
 
       ```
       $file_content
@@ -262,8 +261,7 @@ inputs:
           .DS_Store, */build/, DerivedData/, *.pbxuser, !default.pbxuser, *.mode1v3, !default.mode1v3, *.mode2v3,
           !default.mode2v3, *.perspectivev3, !default.perspectivev3,
 
-      16. Ignore following files while review and consider that these file always follow all the guidelines so reply with "LGTM!" so that comment will not added.               
-        storyboard, iOS pbxproj, xcschemae, info.plist
+      16. Please exclude the following files from the review process and assume that they always adhere to all the guidelines. As such, when these files are included in a pull request, reply with "LGTM!" to avoid unnecessary comments. The files to be ignored are: storyboard, iOS pbxproj, xcschemae, info.plist.
       
       If the patch adheres to all the guidelines, kindly respond with "LGTM!" without any additional suggestions or comments. However, if the guidelines are not met, please provide feedback on the required changes without using "LGTM!" and refrain from adding extra commentary.
 
