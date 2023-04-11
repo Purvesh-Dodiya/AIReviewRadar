@@ -3490,12 +3490,12 @@ const token = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('token')
 const octokit = new _octokit_action__WEBPACK_IMPORTED_MODULE_2__/* .Octokit */ .v({ auth: `token ${token}` });
 const context = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context;
 const repo = context.repo;
-const COMMENT_GREETING = `:robot: OpenAI`;
-const COMMENT_TAG = '<!-- This is an auto-generated comment by OpenAI -->';
-const COMMENT_REPLY_TAG = '<!-- This is an auto-generated reply by OpenAI -->';
-const SUMMARIZE_TAG = '<!-- This is an auto-generated comment: summarize by openai -->';
-const DESCRIPTION_TAG = '<!-- This is an auto-generated comment: release notes by openai -->';
-const DESCRIPTION_TAG_END = '<!-- end of auto-generated comment: release notes by openai -->';
+const COMMENT_GREETING = `:robot: AIReviewRadar`;
+const COMMENT_TAG = '<!-- This is an auto-generated comment by AIReviewRadar -->';
+const COMMENT_REPLY_TAG = '<!-- This is an auto-generated reply by AIReviewRadar -->';
+const SUMMARIZE_TAG = '<!-- This is an auto-generated comment: summarize by AIReviewRadar -->';
+const DESCRIPTION_TAG = '<!-- This is an auto-generated comment: release notes by AIReviewRadar -->';
+const DESCRIPTION_TAG_END = '<!-- end of auto-generated comment: release notes by AIReviewRadar -->';
 class Commenter {
     /**
      * @param mode Can be "create", "replace", "append" and "prepend". Default is "replace".
@@ -6231,7 +6231,7 @@ ${skipped_files_to_summarize.length > 0
         }
         else {
             next_summarize_ids = release_notes_ids;
-            let message = '### Summary by Simform OpenAI 1.0.2\n\n';
+            let message = '### Summary by AIReviewRadar 1.0.2\n\n';
             message += release_notes_response;
             commenter.update_description(context.payload.pull_request.number, message);
         }

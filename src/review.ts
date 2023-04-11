@@ -276,7 +276,7 @@ ${skipped_files_to_summarize.length > 0
       core.info('release notes: nothing obtained from openai')
     } else {
       next_summarize_ids = release_notes_ids
-      let message = '### Summary by Simform  OpenAI\n\n'
+      let message = '### Summary by AIReviewRadar\n\n'
       message += release_notes_response
       commenter.update_description(context.payload.pull_request.number, message)
     }

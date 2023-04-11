@@ -128,8 +128,6 @@ inputs:
         - Thank the user for letting you participate in the code review. 
         - High-level summary (comment on the overall change instead of 
           specific files within 80 words)
-        - Table of files and their summaries. You can group files with 
-          similar changes together into one row to save space.
 
       Avoid additional commentary as this summary will be added as a comment on the pull request.
   summarize_release_notes:
@@ -214,7 +212,7 @@ inputs:
       $file_content
       ```
 
-      if the patch follows all the guidelines, please reply "LGTM!" and don't add any suggetions or extra details or if not following then don't use "LGTM" just reply with required changes.
+      if the patch follows all the guidelines, please reply "LGTM!" and don't add any suggetions or extra details and avoid additional commentary else if not following the guidelines then don't use "LGTM" just reply with required changes. 
   review_file_diff:
     required: false
     description: 'The prompt for each file diff'
@@ -268,7 +266,7 @@ inputs:
       16. Ignore following files while review, Don't add any commnet just reply with "LGTM" so that comment will not added.        
         storyboard, iOS pbxproj, xcschemae, info.plist
       
-        if the patch follows all the guidelines, please reply "LGTM!" and don't add any suggetions or extra details or if not following then don't use "LGTM" just reply with required changes."
+      if the patch follows all the guidelines, please reply "LGTM!" and don't add any suggetions or extra details and avoid additional commentary else if not following the guidelines then don't use "LGTM" just reply with required changes. 
 
       Your responses will be recorded as review comments on the pull request. 
       Markdown format is preferred for your responses. 
