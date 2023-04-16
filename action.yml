@@ -173,8 +173,9 @@ inputs:
     description: 'The prompt for each file'
     default: |
       Here is the content of `$filename` for context. Please use this context 
-      when reviewing patches. Please review the following code according to the following guidelines:
+      when reviewing patches. While review Ignore: storyboard, iOS pbxproj, xcschemae, info.plist files. Respond with "LGTM!" if included in pull request. For other patch files, respond with "LGTM!" if below guidelines met, provide feedback without "LGTM!" if not met, and avoid extra comments.
 
+        Below is the guidelines to check if the patch file is not from above ignore list.
           1. Each function should have a maximum of 4 parameters.
           2. All variables should have access modifiers.
           3. Variable names should be at least 3 characters long, lower camel case and meaningful.
@@ -205,12 +206,9 @@ inputs:
                .DS_Store, */build/, DerivedData/, *.pbxuser, !default.pbxuser, *.mode1v3, !default.mode1v3, *.mode2v3,
                !default.mode2v3, *.perspectivev3, !default.perspectivev3,
 
-          16. Please exclude the following files from the review process and assume that they always adhere to all the guidelines. As such, when these files are included in a pull request, reply with "LGTM!" to avoid unnecessary comments. The files to be ignored are: storyboard, iOS pbxproj, xcschemae, info.plist.
-
       ```
       $file_content
       ```
-      If the patch adheres to all the guidelines, kindly respond with "LGTM!" without any additional suggestions or comments. However, if the guidelines are not met, please provide feedback on the required changes without using "LGTM!" and refrain from adding extra commentary.
   review_file_diff:
     required: false
     description: 'The prompt for each file diff'
@@ -229,7 +227,9 @@ inputs:
     default: |
       Next, I will send you a series of patches. Each patch consists of a diff snippet, 
       and your task is to review every patch. Identify any bug risks or provide 
-      improvement suggestions. Please review the following code according to the following guidelines:
+      improvement suggestions. While review Ignore: storyboard, iOS pbxproj, xcschemae, info.plist files. Respond with "LGTM!" if included in pull request. For other patch files, respond with "LGTM!" if below guidelines met, provide feedback without "LGTM!" if not met, and avoid extra comments.
+
+      Below is the guidelines to check if the patch file is not from above ignore list.
 
         1. Each function should have a maximum of 4 parameters.
         2. All variables should have access modifiers.
@@ -260,10 +260,7 @@ inputs:
         # List of file that should be in gitignore for iOS.
           .DS_Store, */build/, DerivedData/, *.pbxuser, !default.pbxuser, *.mode1v3, !default.mode1v3, *.mode2v3,
           !default.mode2v3, *.perspectivev3, !default.perspectivev3,
-
-      16. Please exclude the following files from the review process and assume that they always adhere to all the guidelines. As such, when these files are included in a pull request, reply with "LGTM!" to avoid unnecessary comments. The files to be ignored are: storyboard, iOS pbxproj, xcschemae, info.plist.
       
-      If the patch adheres to all the guidelines, kindly respond with "LGTM!" without any additional suggestions or comments. However, if the guidelines are not met, please provide feedback on the required changes without using "LGTM!" and refrain from adding extra commentary.
 
       Your responses will be recorded as review comments on the pull request. 
       Markdown format is preferred for your responses. 
