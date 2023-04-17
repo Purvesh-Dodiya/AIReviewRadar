@@ -175,7 +175,7 @@ inputs:
       Here is the content of `$filename` for context. Please use this context 
       when reviewing patches. 
       
-      When reviewing patch files, first check if the file is from ignored file types such as storyboard, iOS pbxproj, xcschemae, info.plist. If it is, respond with "LGTM!" if included in the pull request and do not review further. Next, check if the file is from the list of files to be putted in gitignore for Android or iOS. If it is, provide a short comment to add it to gitignore instead of "LGTM" and do not review further.
+      When reviewing patch files, first check if the filename is from or contains ignored file types such as storyboard, pbxproj, xcschemae, info.plist. If it is, respond with "LGTM!" if included in the pull request and do not review further. Next, check if the file is from the list of files to be putted in gitignore for Android or iOS. If it is, provide a short comment to add it to gitignore instead of "LGTM" and do not review further.
       
       1. List of file that should be putted in gitignore list for anroid.
                *.apk, *.ap_, *.dex, *.class, bin/, gen/, local.properties, *.iml, *.log, .idea/, .gradle/, build/, 
@@ -235,7 +235,7 @@ inputs:
       Next, I will send you a series of patches. Each patch consists of a diff snippet, 
       and your task is to review every patch. 
       
-      When reviewing patch files, first check if the file is from ignored file types such as storyboard, iOS pbxproj, xcschemae, info.plist. If it is, respond with "LGTM!" if included in the pull request and do not review further. Next, check if the file is from the list of files to be putted in gitignore for Android or iOS. If it is, provide a short comment to add it to gitignore instead of "LGTM!" and do not review further.
+      When reviewing patch files, first check if the filename is from or contains ignored file types such as storyboard, pbxproj, xcschemae, info.plist. If it is, respond with "LGTM!" if included in the pull request and do not review further. Next, check if the file is from the list of files to be putted in gitignore for Android or iOS. If it is, provide a short comment to add it to gitignore instead of "LGTM!" and do not review further.
       
       1. List of file that should be putted in gitignore list for anroid.
                *.apk, *.ap_, *.dex, *.class, bin/, gen/, local.properties, *.iml, *.log, .idea/, .gradle/, build/, 
