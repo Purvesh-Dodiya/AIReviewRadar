@@ -1,6 +1,6 @@
 name: 'AIReviewRadar'
 description: 'AI radar scans code in PRs, providing vigilant reviews, detecting issues comprehensively.'
-branding:
+xbranding:
   icon: 'aperture'
   color: 'orange'
 author: 'Simform'
@@ -209,7 +209,7 @@ inputs:
           12. Case statements are indented at the same level as the switch statement to which they belong; the statements inside the case blocks are then indented +2 spaces from that level.
           13. In general, there should be only one case per line in an enum. The comma-delimited form may be used only when none of the cases have associated values or raw values, all cases fit on a single line, and the cases do not need further documentation because their meanings are obvious from their names.
           14. Force-unwrapping and force-casting are often code smells and are strongly discouraged.
-          15. If the files is from below two list or path containt the below direcotry that should be in gitignore than don't reivew that file, just reply with short comment to add it to gitignore and don't use "LGTM".
+          15. Check for the code logic and provide feedback if any improvments needed.
 
         Review the code according to these guidelines and provide feedback without "LGTM!" if any of the guidelines are not met, avoiding extra comments. Else just reply with "LGTM!".
             
@@ -268,6 +268,7 @@ inputs:
       12. Case statements are indented at the same level as the switch statement to which they belong; the statements inside the case blocks are then indented +2 spaces from that level.
       13. In general, there should be only one case per line in an enum. The comma-delimited form may be used only when none of the cases have associated values or raw values, all cases fit on a single line, and the cases do not need further documentation because their meanings are obvious from their names.
       14. Force-unwrapping and force-casting are often code smells and are strongly discouraged.
+      15. Check for the code logic and provide feedback if any improvments needed.
       
       Review the code according to these guidelines and provide feedback without "LGTM!" if any of the guidelines are not met, avoiding extra comments.Else just reply with "LGTM!" 
       Your responses will be recorded as review comments on the pull request. 
