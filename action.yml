@@ -173,7 +173,19 @@ inputs:
     description: 'The prompt for each file'
     default: |
       Here is the content of `$filename` for context. Please use this context 
-      when reviewing patches. While review Ignore: storyboard, iOS pbxproj, xcschemae, info.plist files. Respond with "LGTM!" if included in pull request. For other patch files, respond with "LGTM!" if below guidelines met, provide feedback without "LGTM!" if not met, and avoid extra comments.
+      when reviewing patches. 
+      
+      When reviewing patch files, first check if the file is from ignored file types such as storyboard, iOS pbxproj, xcschemae, info.plist. If it is, respond with "LGTM!" if included in the pull request and do not review further. Next, check if the file is from the list of files to be putted in gitignore for Android or iOS. If it is, provide a short comment to add it to gitignore instead of "LGTM" and do not review further.
+      
+      1. List of file that should be putted in gitignore list for anroid.
+               *.apk, *.ap_, *.dex, *.class, bin/, gen/, local.properties, *.iml, *.log, .idea/, .gradle/, build/, 
+               captures/, .externalNativeBuild, .cxx/,
+
+      2. List of file that should be putted in gitignore list for iOS.
+               .DS_Store, */build/, DerivedData/, *.pbxuser, !default.pbxuser, *.mode1v3, !default.mode1v3, *.mode2v3,
+               !default.mode2v3, *.perspectivev3, !default.perspectivev3,
+
+      Finally, if the file is not in the above list, review the code according to the guidelines listed below:
 
         Below is the guidelines to check if the patch file is not from above ignore list.
           1. Each function should have a maximum of 4 parameters.
@@ -198,14 +210,9 @@ inputs:
           13. In general, there should be only one case per line in an enum. The comma-delimited form may be used only when none of the cases have associated values or raw values, all cases fit on a single line, and the cases do not need further documentation because their meanings are obvious from their names.
           14. Force-unwrapping and force-casting are often code smells and are strongly discouraged.
           15. If the files is from below two list or path containt the below direcotry that should be in gitignore than don't reivew that file, just reply with short comment to add it to gitignore and don't use "LGTM".
-            # List of file that should be in gitignore for anroid.
-               *.apk, *.ap_, *.dex, *.class, bin/, gen/, local.properties, *.iml, *.log, .idea/, .gradle/, build/, 
-               captures/, .externalNativeBuild, .cxx/,
 
-             # List of file that should be in gitignore for iOS.
-               .DS_Store, */build/, DerivedData/, *.pbxuser, !default.pbxuser, *.mode1v3, !default.mode1v3, *.mode2v3,
-               !default.mode2v3, *.perspectivev3, !default.perspectivev3,
-
+        Review the code according to these guidelines and provide feedback without "LGTM!" if any of the guidelines are not met, avoiding extra comments.
+            
       ```
       $file_content
       ```
@@ -226,10 +233,19 @@ inputs:
     description: 'The prompt for each file diff'
     default: |
       Next, I will send you a series of patches. Each patch consists of a diff snippet, 
-      and your task is to review every patch. Identify any bug risks or provide 
-      improvement suggestions. While review Ignore: storyboard, iOS pbxproj, xcschemae, info.plist files. Respond with "LGTM!" if included in pull request. For other patch files, respond with "LGTM!" if below guidelines met, provide feedback without "LGTM!" if not met, and avoid extra comments.
+      and your task is to review every patch. 
+      
+      When reviewing patch files, first check if the file is from ignored file types such as storyboard, iOS pbxproj, xcschemae, info.plist. If it is, respond with "LGTM!" if included in the pull request and do not review further. Next, check if the file is from the list of files to be putted in gitignore for Android or iOS. If it is, provide a short comment to add it to gitignore instead of "LGTM!" and do not review further.
+      
+      1. List of file that should be putted in gitignore list for anroid.
+               *.apk, *.ap_, *.dex, *.class, bin/, gen/, local.properties, *.iml, *.log, .idea/, .gradle/, build/, 
+               captures/, .externalNativeBuild, .cxx/,
 
-      Below is the guidelines to check if the patch file is not from above ignore list.
+      2. List of file that should be putted in gitignore list for iOS.
+               .DS_Store, */build/, DerivedData/, *.pbxuser, !default.pbxuser, *.mode1v3, !default.mode1v3, *.mode2v3,
+               !default.mode2v3, *.perspectivev3, !default.perspectivev3,
+
+      Finally, if the file is not in the above list, review the code according to the guidelines listed below:
 
         1. Each function should have a maximum of 4 parameters.
         2. All variables should have access modifiers.
@@ -252,16 +268,8 @@ inputs:
       12. Case statements are indented at the same level as the switch statement to which they belong; the statements inside the case blocks are then indented +2 spaces from that level.
       13. In general, there should be only one case per line in an enum. The comma-delimited form may be used only when none of the cases have associated values or raw values, all cases fit on a single line, and the cases do not need further documentation because their meanings are obvious from their names.
       14. Force-unwrapping and force-casting are often code smells and are strongly discouraged.
-      15. If the files is from below two list or path containt the below direcotry that should be in gitignore than don't reivew that file, just reply with short comment to add it to gitignore and don't use "LGTM"
-        # List of file that should be in gitignore for anroid.
-          *.apk, *.ap_, *.dex, *.class, bin/, gen/, local.properties, *.iml, *.log, .idea/, .gradle/, build/, 
-          captures/, .externalNativeBuild, .cxx/,
-
-        # List of file that should be in gitignore for iOS.
-          .DS_Store, */build/, DerivedData/, *.pbxuser, !default.pbxuser, *.mode1v3, !default.mode1v3, *.mode2v3,
-          !default.mode2v3, *.perspectivev3, !default.perspectivev3,
       
-
+      Review the code according to these guidelines and provide feedback without "LGTM!" if any of the guidelines are not met, avoiding extra comments.
       Your responses will be recorded as review comments on the pull request. 
       Markdown format is preferred for your responses. 
 
