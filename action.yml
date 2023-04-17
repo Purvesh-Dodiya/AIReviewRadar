@@ -1,5 +1,5 @@
-name: 'OpenAISimformAction'
-description: 'OpenAI ChatGPT based PR Reviewer'
+name: 'AIReviewRadar'
+description: 'AI radar scans code in PRs, providing vigilant reviews, detecting issues comprehensively.'
 branding:
   icon: 'aperture'
   color: 'orange'
@@ -19,9 +19,9 @@ inputs:
     description: 'Max files to review. Less than or equal to 0 means no limit.'
     default: '25'
   review_comment_lgtm:
-    required: true
+    required: false
     description: 'Leave comments even if the patch is LGTM'
-    default: 'true'
+    default: 'false'
   path_filters:
     required: false
     description: |
