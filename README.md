@@ -1,15 +1,17 @@
-# OpenAI ChatGPT based PR reviewer and summarizer
+# AI-powered radar that scans and detects issues in code during PR reviews, providing a comprehensive and vigilant review process.
 
 ## Overview
 
-This [OpenAI ChatGPT](https://platform.openai.com/docs/guides/chat) based GitHub
-Action provides a summary, release notes and review of pull requests. The
-prompts have been tuned for a concise response. To prevent excessive
-notifications, this action can be configured to skip adding review comments when
-the changes look good for the most part.
+AIReviewRadar is a GitHub Action-based tool that uses AI capabilities to assist with Pull Request (PR) reviews. It offers the following features:
 
-In addition, this action can also reply to the user comments made on the review
-by this action.
+1.  Automated code analysis: AIReviewRadar uses Open AI API to analyze code and provides suggestions for code refactoring, helping to improve code quality.
+3. Violation notifications: If code violates the set coding standards, AIReviewRadar adds comments to the PR, guiding developers on how to improve their code.
+4. Streamlined PR review process: By automating parts of the review process, AIReviewRadar reduces the time and effort required for PR reviews.
+5. Objective and consistent review process: AIReviewRadar ensures an objective and consistent review process, reducing subjectivity and inconsistencies.
+6. Improved code quality: With AI-powered code analysis and suggestions, AIReviewRadar helps developers improve their code, resulting in better overall code quality.
+ 
+
+With its AI capabilities and customizable features, AIReviewRadar helps organizations achieve faster PR reviews, maintain coding standards, and improve the quality of their code.
 
 NOTES:
 
@@ -27,7 +29,7 @@ Add the below file to your repository at
 `.github/workflows/openai-pr-reviewer.yml`
 
 ```yaml
-name: Code Review
+name: AIReviewRadar
 
 permissions:
   contents: read
@@ -49,7 +51,7 @@ jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-      - uses: purvesh-d/OpenAIPRReviewAction@1.0.0
+      - uses: purvesh-d/AIReviewRadar@1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -88,23 +90,6 @@ See: [action.yml](./action.yml)
 Any suggestions or pull requests for improving the prompts are highly
 appreciated.
 
-## Developing
-
-> First, you'll need to have a reasonably modern version of `node` handy, tested
-> with node 16.
-
-Install the dependencies
-
-```bash
-$ npm install
-```
-
-Build the typescript and package it for distribution
-
-```bash
-$ npm run build && npm run package
-```
-
 ## FAQs
 
 ### Review pull request from forks
@@ -115,7 +100,7 @@ this feature, you need to use the `pull_request_target` event instead of
 need extra configuration to ensure checking out the right commit:
 
 ```yaml
-name: Code Review
+name: AIReviewRadar
 
 permissions:
   contents: read
@@ -138,7 +123,7 @@ jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-      - uses: purvesh-d/OpenAIPRReviewAction@1.0.0
+      - uses: purvesh-d/AIReviewRadar@1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -147,10 +132,7 @@ jobs:
           review_comment_lgtm: false
 ```
 
-See also:
-https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_target
-
 ### Inspect the messages between OpenAI server
 
 Set `debug: true` in the workflow file to enable debug mode, which will show the
-messages
+messages.

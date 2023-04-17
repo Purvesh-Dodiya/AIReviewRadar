@@ -1,5 +1,5 @@
 {
-  "name": "OpenAISimformAction",
+  "name": "AIReviewRadar",
   "version": "1.0.2",
   "private": true,
   "description": "OpenAI-based PR Reviewer.",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/purvesh-d/OpenAIPRReviewAction.git"
+    "url": "git+https://github.com/purvesh-d/AIReviewRadar.git"
   },
   "keywords": [
     "actions",
