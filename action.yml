@@ -179,7 +179,7 @@ inputs:
       
       1. List of file that should be putted in gitignore list for anroid.
                *.apk, *.ap_, *.dex, *.class, bin/, gen/, local.properties, *.iml, *.log, .idea/, .gradle/, build/, 
-               captures/, .externalNativeBuild, .cxx/,
+               captures/, .externalNativeBuild, .cxx/, gradlew
 
       2. List of file that should be putted in gitignore list for iOS.
                .DS_Store, */build/, DerivedData/, *.pbxuser, !default.pbxuser, *.mode1v3, !default.mode1v3, *.mode2v3,
@@ -211,7 +211,7 @@ inputs:
           14. Force-unwrapping and force-casting are often code smells and are strongly discouraged.
           15. If the files is from below two list or path containt the below direcotry that should be in gitignore than don't reivew that file, just reply with short comment to add it to gitignore and don't use "LGTM".
 
-        Review the code according to these guidelines and provide feedback without "LGTM!" if any of the guidelines are not met, avoiding extra comments.
+        Review the code according to these guidelines and provide feedback without "LGTM!" if any of the guidelines are not met, avoiding extra comments. Else just reply with "LGTM!".
             
       ```
       $file_content
@@ -239,7 +239,7 @@ inputs:
       
       1. List of file that should be putted in gitignore list for anroid.
                *.apk, *.ap_, *.dex, *.class, bin/, gen/, local.properties, *.iml, *.log, .idea/, .gradle/, build/, 
-               captures/, .externalNativeBuild, .cxx/,
+               captures/, .externalNativeBuild, .cxx/, gradlew
 
       2. List of file that should be putted in gitignore list for iOS.
                .DS_Store, */build/, DerivedData/, *.pbxuser, !default.pbxuser, *.mode1v3, !default.mode1v3, *.mode2v3,
@@ -269,7 +269,7 @@ inputs:
       13. In general, there should be only one case per line in an enum. The comma-delimited form may be used only when none of the cases have associated values or raw values, all cases fit on a single line, and the cases do not need further documentation because their meanings are obvious from their names.
       14. Force-unwrapping and force-casting are often code smells and are strongly discouraged.
       
-      Review the code according to these guidelines and provide feedback without "LGTM!" if any of the guidelines are not met, avoiding extra comments.
+      Review the code according to these guidelines and provide feedback without "LGTM!" if any of the guidelines are not met, avoiding extra comments.Else just reply with "LGTM!" 
       Your responses will be recorded as review comments on the pull request. 
       Markdown format is preferred for your responses. 
 
